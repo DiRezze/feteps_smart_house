@@ -5,31 +5,15 @@ import {
   useEffect,
   useState,
 } from "react";
+import {
+  ThemeContextType,
+  ThemeProviderProps,
+  ThemeKey,
+} from "../types/themeTypes";
 import { useColorScheme } from "react-native";
 import { colors } from "../constants/colors";
 
-type ThemeKey = "light" | "dark";
-
-interface Theme {
-  primary: string;
-  primaryOutline: string;
-  softBlack: string;
-  softGray: string;
-  softWhite: string;
-  background: string;
-}
-
-interface ThemeContextType {
-  theme: string;
-  currentTheme: Theme;
-  setTheme: (theme: string) => void;
-}
-
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-interface ThemeProviderProps {
-  children: ReactNode;
-}
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>("default");
